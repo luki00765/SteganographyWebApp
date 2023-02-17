@@ -1,0 +1,52 @@
+<div class="row">
+  <div class="col-xs-12 col-lg-12">
+    <form>
+      <div class="row">
+        <div class="col-sm-12 col-md-4 form-group"></div>
+        <div class="col-sm-12 col-md-4 form-group">
+          <h4>Hide Message</h4>
+          <label for="formFile">File Input</label>
+          <input type="file" class="form-control" id="formFile" #fileInput (change)="onFileChange($event)" [ngClass]="{'is-invalid': isFileInvalid}">
+          <div class="invalid-feedback">Please select a file.</div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 col-md-4 form-group"></div>
+        <div class="col-sm-12 col-md-4 form-group">
+          <label for="message">Message</label>
+          <textarea class="form-control" id="message" rows="3" [(ngModel)]="message" name="message" [ngClass]="{'is-invalid': isMessageEmpty}" (input)="onMessageChange()"></textarea>
+          <div class="invalid-feedback">Please write a message.</div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-lg-12">
+          <div class="row">
+            <div class="col-sm-12 col-md-4 form-group">
+            </div>
+            <div class="col-sm-12 col-md-4 form-group">
+              <button id="hideBtn" type="button" class="btn btn-primary" (click)="hide()">Hide</button>
+            </div>
+            <div class="col-sm-12 col-md-4 form-group">
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-xs-12 col-lg-12">
+          <div class="row">
+            <div class="col-sm-12 col-md-4 form-group">
+            </div>
+            <div class="col-sm-12 col-md-4 form-group">
+              <div class="terminal">
+                <h2>{{ response }}</h2>
+              </div>
+            </div>
+            <div class="col-sm-12 col-md-4 form-group">
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

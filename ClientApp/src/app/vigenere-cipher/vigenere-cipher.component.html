@@ -1,0 +1,60 @@
+<div class="row">
+  <div class="col-xs-12 col-lg-12">
+    <form>
+      <div class="row">
+        <div class="col-sm-12 col-md-4 form-group"></div>
+        <div class="col-sm-12 col-md-4 form-group">
+          <h4>Vigenere Cipher</h4>
+          <label for="message">Message</label>
+          <input id="message" type="text" [(ngModel)]="message" class="form-control" name="message" [ngClass]="{'is-invalid': isMessageEmpty}" (input)="onMessageChange()">
+          <div class="invalid-feedback">Please write a message.</div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 col-md-4 form-group"></div>
+        <div class="col-sm-12 col-md-4 form-group">
+          <label for="shift">Shift - letter only</label>
+          <input id="shift" type="text" [(ngModel)]="shift" class="form-control" name="shift" [ngClass]="{'is-invalid': isShiftValid}" (input)="onShiftChange($event)">
+          <div class="invalid-feedback">{{ invalidFeedbackText }}</div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-lg-12">
+          <div class="row">
+            <div class="col-sm-12 col-md-4 form-group">
+            </div>
+            <div class="col-sm-12 col-md-4 form-group">
+              <label class="switch-light" onclick="">
+                <input type="checkbox" [(ngModel)]="checkboxValue" name="checkbox">
+                <span class="alert alert-light">
+                  <span [ngClass]="{'text-white': !checkboxValue, 'text-black': checkboxValue}">Encrypt</span>
+                  <span [ngClass]="{'text-white': checkboxValue, 'text-black': !checkboxValue}">Decrypt</span>
+                  <a class="btn btn-primary"></a>
+                </span>
+              </label>
+              <button (click)="submitForm()" class="btn btn-primary" type="submit">Submit</button>
+            </div>
+            <div class="col-sm-12 col-md-4 form-group">
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-xs-12 col-lg-12">
+          <div class="row">
+            <div class="col-sm-12 col-md-4 form-group">
+            </div>
+            <div class="col-sm-12 col-md-4 form-group">
+              <div class="terminal">
+                <h2>{{ response }}</h2>
+              </div>
+            </div>
+            <div class="col-sm-12 col-md-4 form-group">
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
