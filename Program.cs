@@ -3,6 +3,7 @@ using SteganographyWebApp.CipherMethods.Interfaces;
 using SteganographyWebApp.Steganography.Implementation;
 using SteganographyWebApp.SteganographyMethods.Interfaces;
 using SteganographyWebApp.Middlewares;
+using Microsoft.AspNetCore.Server.Kestrel.Core;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddHttpContextAccessor();
@@ -10,6 +11,17 @@ builder.Services.AddControllers();
 builder.Services.AddScoped<ErrorHandlerMiddleware>();
 builder.Services.AddTransient<ISteganographyMethod, LsbSteganographyMethod>();
 builder.Services.AddSwaggerGen();
+
+int limitSize100mb = 104857600;
+builder.Services.Configure<IISServerOptions>(options =>
+{
+	options.MaxRequestBodySize = limitSize100mb;
+});
+
+builder.Services.Configure<KestrelServerOptions>(options =>
+{
+	options.Limits.MaxRequestBodySize = limitSize100mb;
+});
 
 builder.Services.AddCors(options =>
 {
